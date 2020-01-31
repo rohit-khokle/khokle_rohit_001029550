@@ -63,6 +63,11 @@ public class VitalSigns {
     public void setWghtP(float wghtP) {
         this.wghtP = wghtP;
     }
+
+    @Override
+    public String toString() {
+        return "VitalSigns{" + "respiratoryRt=" + respiratoryRt + ", heartRt=" + heartRt + ", sysBP=" + sysBP + ", wght=" + wght + ", wghtP=" + wghtP + '}';
+    }
     
     
     

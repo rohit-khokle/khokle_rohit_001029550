@@ -27,28 +27,135 @@ public class Driver {
 
         
         Scanner sc = new Scanner(System.in); 
-          // String input 
+        // String input
+         System.out.println("Test cases for 1) Hard coded? 2) User selection? ");
+ //       char choice = sc.nextLine();
+        char choice = sc.next().charAt(0);
+        if(choice == '1'){
+        
+        //double respiratoryRt, double heartRt, double sysBP, double wght, double wghtP    
+        VitalSigns newBornVital = new VitalSigns(35, 130, 60, 2, 6);  // Normal
+        Patient newBorn = new Patient("New_Born_Name", 0, 1.1F , newBornVital);
+        
+           
+        VitalSigns infantVital = new VitalSigns(25, 90, 110, 6, 20); // Not normal. 110, BP high
+        Patient infant = new Patient("Infant_Name", 5, 1.1F , infantVital);
+        
+        
+           
+        VitalSigns toodlerVital = new VitalSigns(25, 90, 90, 13, 32); // Not normal, weight.
+        Patient toodler = new Patient("toodler_Name", 13 , 1.1F , toodlerVital);
+        
+        
+           
+        VitalSigns prescholVital = new VitalSigns(25, 110, 90, 15, 38); // Normal
+        Patient preschol = new Patient("preschol_Name", 48, 1.1F , prescholVital);
+        
+           
+        VitalSigns schoolVital = new VitalSigns(25, 100, 115, 40, 90);   // Normal
+        Patient school = new Patient("school_Name",84 , 1.1F , schoolVital);
+        
+           
+        VitalSigns adolVital = new VitalSigns(25, 65, 115, 60, 120); // Not normal
+        Patient adol = new Patient("adol_Name",168, 1.1F , adolVital);
+        
+
+        
+        System.out.println("......For New Born............");
+        System.out.println(newBorn+" with vitals : "+newBornVital);
+        if(newBorn.isPatientNormal())
+            System.out.println(newBorn.getName()+"'s vitals are normal");
+        else 
+            System.out.println(newBorn.getName()+"'s vitals are not normal");    
+        
+        
+        
+        
+        System.out.println("......Infant............");
+        System.out.println("Patient : "+infant);
+        System.out.println(" with vitals : "+infantVital);
+        if(infant.isPatientNormal())
+            System.out.println(infant.getName()+"'s vitals are normal");
+        else 
+            System.out.println(infant.getName()+"'s vitals are not normal");    
+        
+        
+        
+        System.out.println("......Toodler............");
+        System.out.println("Patient : "+toodler);
+        System.out.println(" with vitals : "+toodlerVital);
+        if(toodler.isPatientNormal())
+            System.out.println(toodler.getName()+"'s vitals are normal");
+        else 
+            System.out.println(toodler.getName()+"'s vitals are not normal");    
+        
+        
+        
+        System.out.println("......Preschooler............");
+        System.out.println("Patient : "+preschol);
+        System.out.println(" with vitals : "+prescholVital);
+        if(preschol.isPatientNormal())
+            System.out.println(preschol.getName()+"'s vitals are normal");
+        else 
+            System.out.println(preschol.getName()+"'s vitals are not normal");    
+        
+        
+        
+        
+        
+        
+        System.out.println("......schooler............");
+        System.out.println("Patient : "+school);
+        System.out.println(" with vitals : "+schoolVital);
+        if(school.isPatientNormal())
+            System.out.println(school.getName()+"'s vitals are normal");
+        else 
+            System.out.println(school.getName()+"'s vitals are not normal");    
+        
+        
+        
+        
+        
+        System.out.println("......Adol............");
+        System.out.println("Patient : "+adol);
+        System.out.println(" with vitals : "+adolVital);
+        if(adol.isPatientNormal())
+            System.out.println(adol.getName()+"'s vitals are normal");
+        else 
+            System.out.println(adol.getName()+"'s vitals are not normal");    
+        
+         
+        
+        }
+        
+        
+        else if(choice == '2'){
         while(true)
         { 
          System.out.println("##################################");
          System.out.println("           Welcome                  ");
+         System.out.println("##################################");
+         sc.nextLine(); 
+         
          System.out.println("Please enter name of the patient: ");
          String name = sc.nextLine(); 
          
 
-/*
-         System.out.println("Is "+ name+" a newborn (less than one month baby? (Y/N): ");
+
+         System.out.println("Is "+ name+" a newborn (less than one month baby) or an infant(1-3)? (Y/N): ");
          char c = sc.next().charAt(0);
-         short age;
+         int age = 0;
          if(c == 'Y'){
-             age = 0;
+                System.out.println("Is "+ name+" a newborn? (Y/N): ");
+                char t = sc.next().charAt(0);
+                if(t == 'Y')
+                    age = 0;
+                else
+                    age = 24;
          }
          
-         else{
-            System.out.println("Please enter age (in months)  of "+ name+" : ");
-             age = sc.nextShort();
-         }
- */     
+
+  /*   
         boolean check = true;
         short age = 0;
         do
@@ -99,12 +206,13 @@ public class Driver {
          }                  
          
          
-        }while(check);
+        }while(check ); */ 
          
-//         else{
-//            System.out.println("Please enter age (in months)  of "+ name+" : ");
-//             age = sc.nextShort();
-//         }
+         else{
+            System.out.println("Please enter age (in years)  of "+ name+" : ");
+             age = sc.nextShort();
+             age =  age*12;
+        }
 
 
          System.out.println(" ");
@@ -154,5 +262,5 @@ public class Driver {
         }
          
     }
-    
+    }
 }

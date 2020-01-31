@@ -11,11 +11,11 @@ package Business;
  */
 public class Patient {
     String name;
-    short age;
+    int age;
     float height;
     VitalSigns vitalSigns;
 
-    public Patient(String name, short age, float height, VitalSigns vitalSigns) {
+    public Patient(String name, int age, float height, VitalSigns vitalSigns) {
         this.name = name;
         this.age = age;
         this.height = height;
@@ -30,7 +30,7 @@ public class Patient {
         this.name = name;
     }
 
-    public short getAge() {
+    public int getAge() {
         return age;
     }
 
@@ -144,6 +144,11 @@ public class Patient {
         
     
     return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" + "name=" + name + ", age=" + age + ", height=" + height + ", vitalSigns=" + vitalSigns + '}';
     }
     
     
