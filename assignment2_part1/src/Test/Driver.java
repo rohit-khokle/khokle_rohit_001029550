@@ -62,7 +62,8 @@ public class Driver {
 
         
         System.out.println("......For New Born............");
-        System.out.println(newBorn+" with vitals : "+newBornVital);
+        System.out.println("Patient : "+newBorn);
+        System.out.println("with vitals : "+newBornVital);
         if(newBorn.isPatientNormal())
             System.out.println(newBorn.getName()+"'s vitals are normal");
         else 
@@ -73,7 +74,7 @@ public class Driver {
         
         System.out.println("......Infant............");
         System.out.println("Patient : "+infant);
-        System.out.println(" with vitals : "+infantVital);
+        System.out.println("with vitals : "+infantVital);
         if(infant.isPatientNormal())
             System.out.println(infant.getName()+"'s vitals are normal");
         else 
@@ -83,7 +84,7 @@ public class Driver {
         
         System.out.println("......Toodler............");
         System.out.println("Patient : "+toodler);
-        System.out.println(" with vitals : "+toodlerVital);
+        System.out.println("with vitals : "+toodlerVital);
         if(toodler.isPatientNormal())
             System.out.println(toodler.getName()+"'s vitals are normal");
         else 
@@ -93,7 +94,7 @@ public class Driver {
         
         System.out.println("......Preschooler............");
         System.out.println("Patient : "+preschol);
-        System.out.println(" with vitals : "+prescholVital);
+        System.out.println("with vitals : "+prescholVital);
         if(preschol.isPatientNormal())
             System.out.println(preschol.getName()+"'s vitals are normal");
         else 
@@ -106,7 +107,7 @@ public class Driver {
         
         System.out.println("......schooler............");
         System.out.println("Patient : "+school);
-        System.out.println(" with vitals : "+schoolVital);
+        System.out.println("with vitals : "+schoolVital);
         if(school.isPatientNormal())
             System.out.println(school.getName()+"'s vitals are normal");
         else 
@@ -118,7 +119,7 @@ public class Driver {
         
         System.out.println("......Adol............");
         System.out.println("Patient : "+adol);
-        System.out.println(" with vitals : "+adolVital);
+        System.out.println("with vitals : "+adolVital);
         if(adol.isPatientNormal())
             System.out.println(adol.getName()+"'s vitals are normal");
         else 
