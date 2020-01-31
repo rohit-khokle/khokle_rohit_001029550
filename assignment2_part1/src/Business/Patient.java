@@ -148,7 +148,7 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" + "name=" + name + ", age=" + age + ", height=" + height + ", vitalSigns=" + vitalSigns + '}';
+        return "Patient{" + "name=" + name + ", age=" + age/12 + ", height=" + height + ", vitalSigns=" + vitalSigns + '}';
     }
     
     
