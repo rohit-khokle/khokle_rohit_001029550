@@ -143,7 +143,7 @@ public class Driver {
          
 
 
-         System.out.println("Is "+ name+" a newborn (less than one month baby) or an infant(1-3)? (Y/N): ");
+         System.out.println("Is "+ name+" a newborn (less than one month baby) or an infant(1-12 months)? (Y/N): ");
          char c = sc.next().charAt(0);
          int age = 0;
          if(c == 'Y'){
@@ -152,7 +152,7 @@ public class Driver {
                 if(t == 'Y')
                     age = 0;
                 else
-                    age = 24;
+                    age = 11;
          }
          
 
