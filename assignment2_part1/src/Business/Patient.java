@@ -120,7 +120,7 @@ public class Patient {
                   if((resRt >= 20 && resRt <= 30) && 
                   ( heartRt >= 70 && heartRt <= 110) && 
                   ( bp >= 80 && bp<= 120) && (wt >= 20 && wt <= 42) &&
-                 (wtp >= 40 && wtp <= 93)){
+                 (wtp >= 40 && wtp <= 92)){
                     return true;
                 }      
         }        
