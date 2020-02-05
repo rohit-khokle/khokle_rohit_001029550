@@ -79,7 +79,7 @@ public class VitalSigns {
 
     @Override
     public String toString() {
-        return "VitalSigns{" + "respiratoryRt=" + respiratoryRt + ", heartRt=" + heartRt + ", sysBP=" + sysBP + ", wght=" + wght + ", wghtP=" + wghtP + '}';
+        return "\nVitalSigns{" + "\nrespiratoryRt=" + respiratoryRt + "\n, heartRt=" + heartRt + "\n, sysBP=" + sysBP + "\n, wght=" + wght + "\n, wghtP=" + wghtP + '}';
     }
     
     

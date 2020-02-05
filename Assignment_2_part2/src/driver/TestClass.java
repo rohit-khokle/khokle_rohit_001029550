@@ -262,9 +262,124 @@ public class TestClass {
         }
         
        
+         System.out.println("##############################################################################"); 
+                    
+        Date d10 = new Date(System.currentTimeMillis());                   // Setting the date of the Patient
+        VitalSigns vsP10 = new VitalSigns(15, 56, 115, 65, d10);           // Taking vital sign
+        Patient p5 = new Patient("Sansa Stark", 168, 5.7F, vsP10);      // Adolescent Age
+        
+        
+        Date d11 = new Date(System.currentTimeMillis());                   // Setting a forward date
+        VitalSigns vsP11 = new VitalSigns(16, 57, 111, 70, d11);           // Latest vital  Vitals have abnormal Respiratory Rate
+        p5.setVitalSigns(vsP11);                                           // Setting new vital sign
+        
+   
+        System.out.println("##################### Patient Name : "+p5.getName()+" ##############################"); 
+         
+        System.out.println("#######################################");
+        
+        System.out.println(p5.getName()+"'s vital history is as follows:  ");
+        System.out.println(p5.getVitalSignHistory());
+        
+        
+        System.out.println("#######################################");
+        
+        System.out.println("Current Vital signs are :"+p5.getCurrVitalSign());
+        
+        System.out.println("#######################################");
+        
+        
+        // Checking Respiratory, Heart Rate, Blood pressure and weight vital signs normal or not, individually.
+    
+        System.out.println("Is "+ p5.getName() +" Respiratory Rate normal?  "+p5.thisVitalSignNormal("Respiratory Rate"));
+        
+        
+        System.out.println("Is "+ p5.getName() +" Blood Pressure rate normal?  "+p5.thisVitalSignNormal("Blood Pressure"));
+        
+        
+        System.out.println("Is "+ p5.getName() +" Heart Rate normal?  "+p5.thisVitalSignNormal("Heart Rate"));
+        
+        
+        System.out.println("Is "+ p5.getName() +" weight (kilograms) normal?  "+p5.thisVitalSignNormal("weight"));
+        
+        System.out.println("#######################################");
+        
+        
+        
+        if(p5.thisVitalSignNormal("weight") && p5.thisVitalSignNormal("Heart Rate") 
+         && p5.thisVitalSignNormal("Blood Pressure") && p5.thisVitalSignNormal("Respiratory Rate")  ){ 
+        
+            System.out.println("Patient "+  p5.getName()  +"'s vitals are normal");
+        
+        }
+        else{
+        
+            System.out.println("Patient "+p5.getName()+"'s vitals are not normal. Please consult a doctor.");
+        
+        }
+        
+       
        System.out.println("##############################################################################"); 
         
-             
+                    
+        Date d12 = new Date(System.currentTimeMillis());                   // Setting the date of the Patient
+        VitalSigns vsP12 = new VitalSigns(15, 125, 65, 2.5, d12);           // Taking vital sign
+        Patient p6 = new Patient("Arya Stark", 0, 5.7F, vsP12);      // Adolescent Age
+        
+        
+        Date d13 = new Date(System.currentTimeMillis());                   // Setting a forward date
+        VitalSigns vsP13 = new VitalSigns(16, 161, 65, 2.5, d13);           // Latest vital  Vitals have abnormal Respiratory Rate
+        p6.setVitalSigns(vsP13);                                           // Setting new vital sign
+        
+   
+        System.out.println("##################### Patient Name : "+p6.getName()+" ##############################"); 
+         
+        System.out.println("#######################################");
+        
+        System.out.println(p6.getName()+"'s vital history is as follows:  ");
+        System.out.println(p6.getVitalSignHistory());
+        
+        
+        System.out.println("#######################################");
+        
+        System.out.println("Current Vital signs are :"+p6.getCurrVitalSign());
+        
+        System.out.println("#######################################");
+        
+        
+        // Checking Respiratory, Heart Rate, Blood pressure and weight vital signs normal or not, individually.
+    
+        System.out.println("Is "+ p6.getName() +" Respiratory Rate normal?  "+p6.thisVitalSignNormal("Respiratory Rate"));
+        
+        
+        System.out.println("Is "+ p6.getName() +" Blood Pressure rate normal?  "+p6.thisVitalSignNormal("Blood Pressure"));
+        
+        
+        System.out.println("Is "+ p6.getName() +" Heart Rate normal?  "+p6.thisVitalSignNormal("Heart Rate"));
+        
+        
+        System.out.println("Is "+ p6.getName() +" weight (kilograms) normal?  "+p6.thisVitalSignNormal("weight"));
+        
+        System.out.println("#######################################");
+        
+        
+        
+        if(p6.thisVitalSignNormal("weight") && p6.thisVitalSignNormal("Heart Rate") 
+         && p6.thisVitalSignNormal("Blood Pressure") && p6.thisVitalSignNormal("Respiratory Rate")  ){ 
+        
+            System.out.println("Patient "+  p6.getName()  +"'s vitals are normal");
+        
+        }
+        else{
+        
+            System.out.println("Patient "+p6.getName()+"'s vitals are not normal. Please consult a doctor.");
+        
+        }
+        
+       
+       System.out.println("##############################################################################"); 
+        
+         
         
         
         
