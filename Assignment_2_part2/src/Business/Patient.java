@@ -281,10 +281,6 @@ public class Patient {
                         }      
                 }        
 
-
-
-
-
                 // School age (6-12)
 
                 if(age >= 60  && age <= 144){
@@ -293,21 +289,13 @@ public class Patient {
                         }      
                 }        
 
-
-
-
                 // Adolescent (13+)
 
                 if(age >= 144){
                           if((heartRt >= 55 && heartRt <= 105)){
                             return true;
                         }      
-                }        
-
-
-
-        
-        
+                }              
         }
         
         
