@@ -8,6 +8,8 @@ package Interface;
 import Business.Product;
 import javax.swing.JOptionPane;
 import Business.ProductDirectory;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 /**
  *
  * @author info
@@ -17,11 +19,13 @@ public class ViewPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewPanel
      */
+    
+    private JPanel rightPanel;
     private ProductDirectory prodDir;
     private Product product;
     
   
-    ViewPanel(Product prod, ProductDirectory accDir) {
+    ViewPanel(Product prod, ProductDirectory accDir, JPanel panel) {
         initComponents();
         this.product=prod;
         txtAvailablity.setText(String.valueOf(prod.getAvailNum()));
@@ -29,7 +33,22 @@ public class ViewPanel extends javax.swing.JPanel {
         txtProdName.setText(prod.getName());
         txtDesc.setText(prod.getDescription());
         this.prodDir = accDir;
+        this.rightPanel = panel;
+        setFieldsEditable(false);
     }
+    
+    
+    
+    
+        
+    public void setFieldsEditable(boolean click){
+        txtAvailablity.setEditable(click);
+        txtDesc.setEditable(click);
+        txtPrice.setEditable(click);
+        txtProdName.setEditable(click);
+    
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,12 +62,12 @@ public class ViewPanel extends javax.swing.JPanel {
         txtPrice = new javax.swing.JTextField();
         txtProdName = new javax.swing.JTextField();
         txtAvailablity = new javax.swing.JTextField();
-        lblBankName = new javax.swing.JLabel();
-        lblRoutingNo = new javax.swing.JLabel();
-        lblAccNo = new javax.swing.JLabel();
+        lblDesc = new javax.swing.JLabel();
+        lblProdName = new javax.swing.JLabel();
+        lblAvail = new javax.swing.JLabel();
         lblHead = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtDesc = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
@@ -61,11 +80,11 @@ public class ViewPanel extends javax.swing.JPanel {
 
         txtAvailablity.setEditable(false);
 
-        lblBankName.setText("Price");
+        lblDesc.setText("Price");
 
-        lblRoutingNo.setText("Product Name");
+        lblProdName.setText("Product Name");
 
-        lblAccNo.setText("Availablity");
+        lblAvail.setText("Availablity");
 
         lblHead.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblHead.setText("View Product");
@@ -77,11 +96,11 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSave.setText("Save");
-        btnSave.setEnabled(false);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
+        saveBtn.setText("Save");
+        saveBtn.setEnabled(false);
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
+                saveBtnActionPerformed(evt);
             }
         });
 
@@ -104,10 +123,10 @@ public class ViewPanel extends javax.swing.JPanel {
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblRoutingNo)
-                                .addComponent(lblAccNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblBankName)
-                                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblProdName)
+                                .addComponent(lblAvail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblDesc)
+                                .addComponent(saveBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel1))
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -131,15 +150,15 @@ public class ViewPanel extends javax.swing.JPanel {
                     .addComponent(backBtn))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRoutingNo)
+                    .addComponent(lblProdName)
                     .addComponent(txtProdName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAccNo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAvail, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAvailablity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBankName)
+                    .addComponent(lblDesc)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -147,63 +166,98 @@ public class ViewPanel extends javax.swing.JPanel {
                     .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
+                    .addComponent(saveBtn)
                     .addComponent(btnUpdate))
                 .addGap(0, 83, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-            txtAvailablity.setEditable(true);
-            txtPrice.setEditable(true);
-            txtProdName.setEditable(true);
-            txtDesc.setEnabled(true);
-            btnSave.setEnabled(true);
-            btnUpdate.setEnabled(false);
+              btnUpdate.setEnabled(false);
+              setFieldsEditable(true);
+              
+              saveBtn.setEnabled(true);
+              saveBtn.setVisible(true);
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
-            txtAvailablity.setEditable(false);
-            txtPrice.setEditable(false);
-            txtProdName.setEditable(false);
-            txtDesc.setEnabled(false);
-            btnSave.setEnabled(false);
+
             btnUpdate.setEnabled(true);
-        
+            try{            
+                Integer.parseInt(txtAvailablity.getText());
+            }
+            catch(NumberFormatException e){
+            
+                JOptionPane.showMessageDialog(null, "Please type in a number in Availablity.");
+                txtAvailablity.setText("");
+                return;
+                
+            }
+            try{
+                Double.parseDouble(txtPrice.getText());
+                }
+            catch(NumberFormatException e){
+            
+                JOptionPane.showMessageDialog(null, "Please type in a number in price.");
+                txtPrice.setText("");
+                return;
+      
+            
+                
+            }
+            try{
+            String s = txtProdName.getText();
+
+                if(s == null || s.isEmpty()){
+                    throw new RuntimeException("empty String or null value");
+                }
+            }
+            catch(RuntimeException e){
+                JOptionPane.showMessageDialog(null, "Name of the product cannot be blank, please enter name.");
+                return;
+            
+            }
+
+        if(!(prodDir == null)){    
+            if(!prodDir.searchProducts(txtProdName.getText()).isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Product name already exist.");
+                txtProdName.setText("");
+                return;
+            }
+        }
+
+            
             product.setName(txtProdName.getText());
             product.setPrice(Double.parseDouble(txtPrice.getText()));
             product.setAvailNum(Integer.parseInt(txtAvailablity.getText()));
             product.setDescription(txtDesc.getText());
         
-            JOptionPane.showMessageDialog(null, "Account updated successfully");        
+            JOptionPane.showMessageDialog(null, "Account updated successfully");     
+            
+            setFieldsEditable(false);
         
-    }//GEN-LAST:event_btnSaveActionPerformed
+    }//GEN-LAST:event_saveBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        rightPanel.remove(this);
+        CardLayout layout = (CardLayout) rightPanel.getLayout();
+        layout.previous(rightPanel);
        
-        
-        
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_backBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblAccNo;
-    private javax.swing.JLabel lblBankName;
+    private javax.swing.JLabel lblAvail;
+    private javax.swing.JLabel lblDesc;
     private javax.swing.JLabel lblHead;
-    private javax.swing.JLabel lblRoutingNo;
+    private javax.swing.JLabel lblProdName;
+    private javax.swing.JButton saveBtn;
     private javax.swing.JTextField txtAvailablity;
     private javax.swing.JTextField txtDesc;
     private javax.swing.JTextField txtPrice;

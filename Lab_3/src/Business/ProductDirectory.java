@@ -45,4 +45,27 @@ public class ProductDirectory {
         }
         return null;
     }
+    
+    
+    public ArrayList<Product> searchProducts(String name){
+        ArrayList<Product> arr = new ArrayList<>();
+        
+        for(Product prod : this.productDirectory){
+            if(prod.getName().equalsIgnoreCase(name))
+                arr.add(prod);
+//                return arr;
+        }
+//           if(arr.isEmpty())
+//               return null;
+ //          else 
+            return arr;
+       
+        //return null;
+    }    
+    
+    
+    
+    
+    
+    
 }

@@ -160,7 +160,37 @@ public class CreateProductJPanel extends javax.swing.JPanel {
             
                 
             }
-     
+            
+            
+            String s = txtProdName.getText();
+            if(s == null || s.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Name of the product cannot be blank, please enter name.");
+                return;
+            }
+        if(!(prodDir == null)){    
+            if(!prodDir.searchProducts(s).isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Product name already exist.");
+                txtProdName.setText("");
+                return;
+            }
+        }
+/*            try{
+            String s = txtProdName.getText();
+
+                if(s == null || s.isEmpty()){
+                    throw new RuntimeException("empty String or null value");
+                }
+            }
+            catch(RuntimeException e){
+                JOptionPane.showMessageDialog(null, "Name of the product cannot be blank, please enter name.");
+                return;
+            
+            }   */
+             
+            
+            
+            
                 Product prod = prodDir.addProduct();
                 prod.setName(txtProdName.getText());
                 prod.setAvailNum(Integer.parseInt(txtAvailablity.getText()));
