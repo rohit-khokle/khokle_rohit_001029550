@@ -106,7 +106,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblAccNo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Availiblity*"/>
+        <Property name="text" type="java.lang.String" value="Availability*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblBankName">

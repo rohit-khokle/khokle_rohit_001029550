@@ -208,30 +208,21 @@ public class ViewPanel extends javax.swing.JPanel {
             
                 
             }
-            try{
             String s = txtProdName.getText();
-
+            if(!s.equals(product.getName())){
                 if(s == null || s.isEmpty()){
-                    throw new RuntimeException("empty String or null value");
+                    JOptionPane.showMessageDialog(null, "Name of the product cannot be blank, please enter name.");
+                    return;
                 }
-            }
-            catch(RuntimeException e){
-                JOptionPane.showMessageDialog(null, "Name of the product cannot be blank, please enter name.");
-                return;
-            
-            }
-
-  /*
-            if(!(prodDir == null)){    
-            if(!prodDir.searchProducts(txtProdName.getText()).isEmpty())
-            {
-                JOptionPane.showMessageDialog(null, "Product name already exist.");
-                txtProdName.setText("");
-                return;
-            } 
-        }
-*/
-            
+                if(!(prodDir == null)){    
+                    if(!prodDir.searchProducts(s).isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(null, "Product name already exist.");
+                        txtProdName.setText("");
+                        return;
+                    }
+                }
+            }       
             product.setName(txtProdName.getText());
             product.setPrice(Double.parseDouble(txtPrice.getText()));
             product.setAvailNum(Integer.parseInt(txtAvailablity.getText()));
@@ -240,6 +231,8 @@ public class ViewPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Account updated successfully");     
             
             setFieldsEditable(false);
+            
+            saveBtn.setEnabled(false);
         
     }//GEN-LAST:event_saveBtnActionPerformed
 

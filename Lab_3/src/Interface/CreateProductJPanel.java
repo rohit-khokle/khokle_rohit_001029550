@@ -55,7 +55,7 @@ public class CreateProductJPanel extends javax.swing.JPanel {
 
         lblRoutingNo.setText("Product Name*");
 
-        lblAccNo.setText("Availiblity*");
+        lblAccNo.setText("Availability*");
 
         lblBankName.setText("Price*");
 

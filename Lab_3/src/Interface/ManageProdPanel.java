@@ -418,19 +418,28 @@ public class ManageProdPanel extends javax.swing.JPanel {
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         String s = txtsearch.getText();
-        
-//        Product prod = prodDir.searchAccount(s);
-        ArrayList<Product> prods = prodDir.searchProducts(s);
-        DefaultTableModel dtm = (DefaultTableModel)tblDirectory.getModel();
-        dtm.setRowCount(0);
-        
-        for(Product prod : prods){
-            Object[] row = new Object[dtm.getColumnCount()];
-            row[0]=prod;
-            row[1]=prod.getAvailNum();
-            row[2]=prod.getPrice();
-            dtm.addRow(row);
+
+        if(!(s.length() == 0)){
+            ArrayList<Product> prods = prodDir.searchProducts(s);
+            DefaultTableModel dtm = (DefaultTableModel)tblDirectory.getModel();
+            dtm.setRowCount(0);
+
+            for(Product prod : prods){
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0]=prod;
+                row[1]=prod.getAvailNum();
+                row[2]=prod.getPrice();
+                dtm.addRow(row);
+            }
         }
+        
+        else{
+            populate();
+       
+        }
+        
+        
+        
         
         
     }//GEN-LAST:event_searchBtnActionPerformed
