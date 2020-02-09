@@ -9,6 +9,7 @@ import Business.Product;
 import javax.swing.JOptionPane;
 import Business.ProductDirectory;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 /**
  *
@@ -220,15 +221,16 @@ public class ViewPanel extends javax.swing.JPanel {
             
             }
 
-        if(!(prodDir == null)){    
+  /*
+            if(!(prodDir == null)){    
             if(!prodDir.searchProducts(txtProdName.getText()).isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Product name already exist.");
                 txtProdName.setText("");
                 return;
-            }
+            } 
         }
-
+*/
             
             product.setName(txtProdName.getText());
             product.setPrice(Double.parseDouble(txtPrice.getText()));
@@ -245,6 +247,21 @@ public class ViewPanel extends javax.swing.JPanel {
         rightPanel.remove(this);
         CardLayout layout = (CardLayout) rightPanel.getLayout();
         layout.previous(rightPanel);
+        
+        
+        Component[] comps = this.rightPanel.getComponents();
+        
+        for(Component comp : comps){
+            if(comp instanceof ManageProdPanel){
+                ManageProdPanel manageP = (ManageProdPanel) comp;
+                manageP.populate();
+            
+            }
+        }
+
+        
+        
+        
        
     }//GEN-LAST:event_backBtnActionPerformed
 
