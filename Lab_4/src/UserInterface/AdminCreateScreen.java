@@ -33,6 +33,8 @@ public class AdminCreateScreen extends javax.swing.JPanel {
      */
     private JPanel panelRight;
     private Admin admin;
+ //   private StringBuilder warnMsg;
+    
     public AdminCreateScreen(JPanel panelRight, Admin admin) {
         initComponents();
         initRadio();
@@ -43,7 +45,10 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         txtPword.setBorder(new LineBorder(Color.black));
         jLabel2.setForeground(Color.black); 
         txtUser.setBorder(new LineBorder(Color.black));
-        jLabel1.setForeground(Color.black);         
+        jLabel1.setForeground(Color.black);    
+    //    warnMsg = new StringBuilder();
+        warnLabel.setVisible(false);
+        
     }
 
     
@@ -63,14 +68,19 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         btnCreate = new javax.swing.JButton();
         txtUser = new javax.swing.JTextField();
-        txtPword = new javax.swing.JTextField();
-        txtRePword = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         radioCustomer = new javax.swing.JRadioButton();
         radioSupplier = new javax.swing.JRadioButton();
         btnBack = new javax.swing.JButton();
+        txtPword = new javax.swing.JPasswordField();
+        txtRePword = new javax.swing.JPasswordField();
+        warnLabel = new javax.swing.JLabel();
+        userLabel = new javax.swing.JLabel();
+        pwdLabel = new javax.swing.JLabel();
+        rePwdLabel = new javax.swing.JLabel();
+        radioLabel = new javax.swing.JLabel();
 
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +111,14 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             }
         });
 
+        userLabel.setForeground(new java.awt.Color(255, 0, 51));
+
+        pwdLabel.setForeground(new java.awt.Color(255, 0, 51));
+
+        rePwdLabel.setForeground(new java.awt.Color(255, 0, 51));
+
+        radioLabel.setForeground(new java.awt.Color(255, 0, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,47 +130,63 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnBack)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(warnLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                            .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioSupplier)
-                                    .addComponent(radioCustomer)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(btnBack)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                                    .addComponent(radioCustomer)))
+                            .addComponent(txtPword)
+                            .addComponent(txtRePword))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userLabel)
+                            .addComponent(pwdLabel)
+                            .addComponent(rePwdLabel)
+                            .addComponent(radioLabel))))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(warnLabel))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(userLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(pwdLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
                     .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(rePwdLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(radioCustomer)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioCustomer)
+                    .addComponent(radioLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(radioSupplier)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCreate)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,37 +195,57 @@ public class AdminCreateScreen extends javax.swing.JPanel {
 //            txtUser.setText("");
             txtUser.setBorder(new LineBorder(Color.red));
             jLabel1.setForeground(Color.red);
+            userLabel.setVisible(true);
+            userLabel.setText("<html> Username not in correct format. correct format: abc_de@fgh.com <br>");
         }
         else if(usernamePatternCorrect()) {
             txtUser.setBorder(new LineBorder(Color.black));
             jLabel1.setForeground(Color.black);
-        
+            userLabel.setVisible(false);
+
+            warnLabel.setVisible(false);
+            warnLabel.setForeground(Color.red);
+            warnLabel.setText("");            
+            
+            
+            
         }
         if(!pwdPatternCorrect()){
 //            txtPword.setText("");
             txtPword.setBorder(new LineBorder(Color.red));
             jLabel2.setForeground(Color.red);        
-        
+            pwdLabel.setVisible(true);
+            pwdLabel.setText("Password acceptable format: min. 6, one small, one capital letter, one special character and one number.");
         }
         else if(pwdPatternCorrect()) {
             txtPword.setBorder(new LineBorder(Color.black));
             jLabel2.setForeground(Color.black);        
-              
+            
+            pwdLabel.setVisible(false);
+            
+
+
         }
         if(!repwdCorrect()){
 
             txtRePword.setBorder(new LineBorder(Color.red));
-            jLabel3.setForeground(Color.red);        
+            jLabel3.setForeground(Color.red);
+            rePwdLabel.setVisible(true);
+            rePwdLabel.setText("Retype password and password are different. <br>");        
         }
         else if (repwdCorrect())
                 {
             txtRePword.setBorder(new LineBorder(Color.black));
             jLabel3.setForeground(Color.black);        
-        
+            rePwdLabel.setText("");        
         }
         if(!isTypeSelected())
         {
-            JOptionPane.showMessageDialog(null, "Please select User-Type");
+    //        JOptionPane.showMessageDialog(null, "Please select User-Type");    
+            radioLabel.setText("Please select user type.");            
+        }
+        else if(isTypeSelected()){
+            radioLabel.setText(""); 
         
         }
         
@@ -219,8 +273,6 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             }
             
         }
-        
-        
         
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -329,10 +381,15 @@ public class AdminCreateScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel pwdLabel;
     private javax.swing.JRadioButton radioCustomer;
+    private javax.swing.JLabel radioLabel;
     private javax.swing.JRadioButton radioSupplier;
-    private javax.swing.JTextField txtPword;
-    private javax.swing.JTextField txtRePword;
+    private javax.swing.JLabel rePwdLabel;
+    private javax.swing.JPasswordField txtPword;
+    private javax.swing.JPasswordField txtRePword;
     private javax.swing.JTextField txtUser;
+    private javax.swing.JLabel userLabel;
+    private javax.swing.JLabel warnLabel;
     // End of variables declaration//GEN-END:variables
 }
