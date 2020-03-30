@@ -9,6 +9,7 @@ import Business.Customer.Customer;
 import Business.EcoSystem;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,7 +44,7 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
       
             for(Customer u : ecosystem.getCustomerDirectory().getCustomersList()){
                 Object[] row = new Object[dtm.getColumnCount()];
-                row[0]=u.getName();
+                row[0]=u;
                 row[1]=u.getId();
 
                 row[2] = u.getUserName();
@@ -92,6 +93,11 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/update.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +182,26 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = populateCustomerTable.getSelectedRow();
+        if(selectedRow>=0){
+            int selectionButton = JOptionPane.YES_NO_OPTION;
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??","Warning",selectionButton);
+            if(selectionResult == JOptionPane.YES_OPTION){
+                Customer food = (Customer)populateCustomerTable.getValueAt(selectedRow, 0);
+                ecosystem.getCustomerDirectory().getCustomersList().remove(food);
+               // this..getMenu().deleteFromMenu(food);// deleteAirline(airliner);
+                populate();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Please make a selection first.");
+        }
+
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -26,15 +26,18 @@ public class Restaurant {
         this.name = name;
         this.cap = cap;
         menu = new MenuItems();
-        this.wq = new WorkQueue();
+  
         this.count++;
     }
 
     public WorkQueue getWq() {
-        return wq;
+        
+        if(this.wq == null) wq = new WorkQueue();
+           return wq;
     }
 
     public void setWq(WorkQueue wq) {
+        if(this.wq == null) wq = new WorkQueue();
         this.wq = wq;
     }
     

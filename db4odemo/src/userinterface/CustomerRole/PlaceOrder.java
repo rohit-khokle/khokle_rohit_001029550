@@ -176,7 +176,9 @@ public class PlaceOrder extends javax.swing.JPanel {
             request.setMessage(message);
             request.setSender(userAccount);
             request.setStatus("Sent");
+             
             
+            res.getWq().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
             
             JOptionPane.showMessageDialog(null, "Order placed successfully!");

@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.DeliveryManRole;
+package userinterface.RestaurantAdminRole;
 
 import Business.EcoSystem;
+import Business.Organization;
 import Business.Restaurant.Restaurant;
-
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -18,25 +18,29 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
+public class CheckOrdersJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
-  //  private Restaurant res;
+    private Restaurant res;
     
+  //  private JPanel userProcessContainer;
+
+//    private UserAccount userAccount;
+
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public CheckOrdersJPanel(JPanel userProcessContainer, UserAccount account, Restaurant organization, EcoSystem business) {
         initComponents();
-//        this.res = res;
+        
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
+       this.res = (Restaurant)organization;
       
-        
         populateTable();
     }
     
@@ -45,7 +49,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for(WorkRequest request : business.getWorkQueue().getWorkRequestList()){
+        for(WorkRequest request : res.getWq().getWorkRequestList()){
             Object[] row = new Object[4];
             row[0] = request;
             row[1] = request.getSender().getCustomer().getName();
@@ -53,13 +57,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             row[3] = request.getStatus();
             
             model.addRow(row);
-        }        
-        
-        
-        
-        
-        
-        
+        }
     }
 
     /**
@@ -113,7 +111,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 375, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 375, 140));
 
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +127,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 215, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
 
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -165,9 +163,9 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         
         LabTestWorkRequest request = (LabTestWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
      
-        request.setStatus("On the way!");
+        request.setStatus("Processing");
         
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
+        ProcessOrder processWorkRequestJPanel = new ProcessOrder(userProcessContainer, request, this.business);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
